@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Ionic 4 Background Geolocation </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    Background Tracking Mobile Application using Ionic 4 and
+    cordova-plugin-background-geolocation.
+
+    <p>Click the button to start GPS tracking.</p>
+    <p>Version 1.14</p>
+    <p>{{ teststring }}</p>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      shape="round"
+      fill="outline"
+      (click)="startBackgroundGeolocation()"
+      >Start</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>
