@@ -62,12 +62,21 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3",
-    "cordova-plugin-mauron85-background-geolocation": "@mauron85/cordova-plugin-background-geolocation@~3.0.3"
+    "@mauron85/cordova-plugin-background-geolocation": "~3.0.3"
   },
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-background-geolocation": {},
+      "@mauron85/cordova-plugin-background-geolocation": {
+        "GOOGLE_PLAY_SERVICES_VERSION": "11+",
+        "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+        "ICON": "@mipmap/icon",
+        "SMALL_ICON": "@mipmap/icon",
+        "ACCOUNT_NAME": "@string/app_name",
+        "ACCOUNT_LABEL": "@string/app_name",
+        "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+        "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+      },
       "cordova-plugin-advanced-http": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
@@ -76,8 +85,7 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-mauron85-background-geolocation": {}
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "android"
