@@ -28,9 +28,10 @@ export class HomePage {
       distanceFilter: 1,
       notificationTitle: 'Background tracking',
       notificationText: 'enabled',
+      stopOnTerminate: false,
       debug: true,
-      interval: 1000,
-      fastestInterval: 500,
+      interval: 5000,
+      fastestInterval: 1000,
       activitiesInterval: 1000
     };
 
