@@ -10,7 +10,7 @@
     cordova-plugin-background-geolocation.
 
     <p>Click the button to start GPS tracking.</p>
-    <p>Version 1.15</p>
+    <p>Version 1.16</p>
     <p>{{ locationStatus }}</p>
   </div>
 </ion-content>
@@ -23,6 +23,13 @@
       fill="outline"
       (click)="startBackgroundGeolocation()"
       >Start</ion-button
+    >
+    <ion-button
+      expand="block"
+      shape="round"
+      fill="outline"
+      (click)="stopBackgroundGeolocation()"
+      >Stop</ion-button
     >
   </ion-toolbar>
 </ion-footer>

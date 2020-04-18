@@ -54,6 +54,11 @@ export class HomePage {
     this.backgroundGeolocation.stop();
   }
 
+  stopBackgroundGeolocation() {
+    // If you wish to turn OFF background-tracking, call the #stop method.
+    this.backgroundGeolocation.stop();
+  }
+
   sendGPS(location) {
     if (location.speed == undefined) {
       location.speed = 0;
