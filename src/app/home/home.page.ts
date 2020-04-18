@@ -59,7 +59,7 @@ export class HomePage {
       location.speed = 0;
     }
     let timestamp = new Date(location.time);
-    var urlsuffix: string = "storeBy=dm&telephoneUUID="+device_id+"&telephoneLatitude="+location.latitude.toString()+"&telephoneLongitude="+location.longitude.toString();
+    var urlsuffix: string = "storeBy=dm&telephoneUUID="+this.device_id+"&telephoneLatitude="+location.latitude.toString()+"&telephoneLongitude="+location.longitude.toString();
     this.http.post(this.base_server_url+urlsuffix,{},{})
       .then(data => {
         console.log(data.status);
