@@ -26,7 +26,11 @@ npm install
 ```
 
 #### Update to VT API Format
-The VT API requires background location data to be sent as JSONObject while the plugin uses JSONArray. Replace the PostLocationTask.java file with what is included in this repository.
+The VT API requires background location data to be sent as JSONObject while the plugin uses JSONArray. Replace the PostLocationTask.java file with what is included in this repository. As ```npm install``` will overwrite the file, we need to checkout the file again.
+
+```
+git checkout yourpathtoApp\platforms\android\app\src\main\java\com\mariahello\bgloc
+```
 
 #### Run in Browser
 
