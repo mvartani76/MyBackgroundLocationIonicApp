@@ -19,27 +19,30 @@ cordova
 
 A step by step series of examples that tell you how to get a development env running
 
-Install
+#### Install
 
 ```
 npm install
 ```
 
-Run in Browser
+#### Update to VT API Format
+The VT API requires background location data to be sent as JSONObject while the plugin uses JSONArray. Replace the PostLocationTask.java file with what is included in this repository.
+
+#### Run in Browser
 
 ```
 ionic serve
 ```
 
 
-Add Platform Android
+#### Add Platform Android
 
 ```
 ionic cordova platform add android
 ```
 
 
-Run in Android
+#### Run in Android
 
 ```
 ionic cordova run android
