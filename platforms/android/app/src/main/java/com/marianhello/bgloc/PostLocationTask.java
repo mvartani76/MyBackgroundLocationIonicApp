@@ -141,9 +141,9 @@ public class PostLocationTask {
         logger.debug("Executing PostLocationTask#postLocation");
         JSONArray jsonLocations = new JSONArray();
 
+        // MCV updates
         JSONObject myjson = new JSONObject();
         String myjsonString = "";
-        //var myjson;
 
         try {
             jsonLocations.put(mConfig.getTemplate().locationToJson(location));
@@ -155,15 +155,19 @@ public class PostLocationTask {
         String url = mConfig.getUrl();
         logger.debug("Posting json to url: {} headers: {}", url, mConfig.getHttpHeaders());
 
+        // MCV - Convert JSONArray to JSON Object via string intermediary -- probably not ideal
         try {
-            myjsonString = jsonLocations.get(0).toString(); //jsonLocations.toJSONObject("json0");
+            myjsonString = jsonLocations.get(0).toString();
             myjson = new JSONObject(myjsonString);
         } catch (JSONException e) {
             logger.warn("Error while trying to access JSONArray.");
         }
+
         logger.debug("obj =  {}", myjsonString);
+
         int responseCode;
 
+        // MCV Update to send JSONObject instead of JSONArray jsonLocations
         try {
             responseCode = HttpPostService.postJSON(url, myjson, mConfig.getHttpHeaders());
         } catch (Exception e) {
