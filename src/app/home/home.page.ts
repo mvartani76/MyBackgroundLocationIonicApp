@@ -30,6 +30,12 @@ export class HomePage {
       notificationText: 'enabled',
       stopOnTerminate: false,
       debug: true,
+      url: this.base_server_url,
+      postTemplate: {
+        "telephoneADID": this.device_id.toString(),
+        "telephoneLatitude": '@latitude',
+        "telephoneLongitude": '@longitude'
+      },
       interval: 5000,
       fastestInterval: 1000,
       activitiesInterval: 1000
@@ -65,11 +71,15 @@ export class HomePage {
       location.speed = 0;
     }
     let timestamp = new Date(location.time);
-    var urlsuffix: string = "storeBy=dm&telephoneADID="+this.device_id+"&telephoneLatitude="
-                            +location.latitude.toString()+"&telephoneLongitude="
-                            +location.longitude.toString()+"&telephoneAltitude="
-                            +location.altitude.toString();
-    this.http.post(this.base_server_url+urlsuffix,{},{})
+
+    this.http.post(this.base_server_url,
+      {
+        telephoneADID: this.device_id,
+        telephoneLatitude: '@latitude',
+        telephoneLongitude: '@longitude'
+      },
+      {}
+      )
       .then(data => {
         console.log(data.status);
         console.log(data.data); // data received by server
