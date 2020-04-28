@@ -29,7 +29,7 @@ export class HomePage {
       notificationTitle: 'Background tracking',
       notificationText: 'enabled',
       stopOnTerminate: false,
-      debug: true,
+      debug: false,
       url: this.base_server_url,
       postTemplate: {
         "telephoneADID": this.device_id.toString(),
