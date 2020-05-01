@@ -6,6 +6,7 @@ import {
   BackgroundGeolocationEvents
 } from "@ionic-native/background-geolocation/ngx";
 import { HTTP } from "@ionic-native/http/ngx";
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: "app-home",
@@ -19,7 +20,8 @@ export class HomePage {
 
   constructor(
     private backgroundGeolocation: BackgroundGeolocation,
-    private http: HTTP
+    private http: HTTP,
+    private firebaseService: FirebaseService
   ) {}
 
   startBackgroundGeolocation() {
@@ -46,8 +48,8 @@ export class HomePage {
         .on(BackgroundGeolocationEvents.location)
         .subscribe((location: BackgroundGeolocationResponse) => {
           console.log(location);
-          this.sendGPS(location);
           this.locationStatus = "Attempting to send location to server...";
+          this.sendGPS(location);
           // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
           // and the background-task may be completed.  You must do this regardless if your operations are successful or not.
           // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
@@ -72,7 +74,7 @@ export class HomePage {
     }
     let timestamp = new Date(location.time);
 
-    this.http.post(this.base_server_url,
+   /*  this.http.post(this.base_server_url,
       {
         telephoneADID: this.device_id,
         telephoneLatitude: '@latitude',
@@ -93,6 +95,23 @@ export class HomePage {
         console.log(error.headers);
         this.locationStatus = "Error sending location to server...";
         this.backgroundGeolocation.finish(); // FOR IOS ONLY
-      });
+      }); */
+
+      let data = {
+        latitude: location.latitude,
+        longitude: location.longitude,
+        date: timestamp,
+      }
+      console.log(location);
+      this.sendCoordinates(data)
+  }
+
+  sendCoordinates(data){
+    this.firebaseService.addCoordinates(data)
+    .then( res => {
+      console.log(res);
+    }, err => {
+      console.log(err)
+    })
   }
 }

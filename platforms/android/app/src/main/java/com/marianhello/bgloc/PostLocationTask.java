@@ -5,7 +5,6 @@ import com.marianhello.bgloc.data.LocationDAO;
 import com.marianhello.logging.LoggerManager;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.json.JSONException;
 
 import java.util.concurrent.ExecutorService;
@@ -141,10 +140,6 @@ public class PostLocationTask {
         logger.debug("Executing PostLocationTask#postLocation");
         JSONArray jsonLocations = new JSONArray();
 
-        // MCV updates
-        JSONObject myjson = new JSONObject();
-        String myjsonString = "";
-
         try {
             jsonLocations.put(mConfig.getTemplate().locationToJson(location));
         } catch (JSONException e) {
@@ -154,22 +149,10 @@ public class PostLocationTask {
 
         String url = mConfig.getUrl();
         logger.debug("Posting json to url: {} headers: {}", url, mConfig.getHttpHeaders());
-
-        // MCV - Convert JSONArray to JSON Object via string intermediary -- probably not ideal
-        try {
-            myjsonString = jsonLocations.get(0).toString();
-            myjson = new JSONObject(myjsonString);
-        } catch (JSONException e) {
-            logger.warn("Error while trying to access JSONArray.");
-        }
-
-        logger.debug("obj =  {}", myjsonString);
-
         int responseCode;
 
-        // MCV Update to send JSONObject instead of JSONArray jsonLocations
         try {
-            responseCode = HttpPostService.postJSON(url, myjson, mConfig.getHttpHeaders());
+            responseCode = HttpPostService.postJSON(url, jsonLocations, mConfig.getHttpHeaders());
         } catch (Exception e) {
             mHasConnectivity = mConnectivityListener.hasConnectivity();
             logger.warn("Error while posting locations: {}", e.getMessage());
