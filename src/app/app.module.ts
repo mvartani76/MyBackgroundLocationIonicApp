@@ -8,7 +8,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { BackgroundGeolocation } from "@ionic-native/background-geolocation/ngx";
+//import { BackgroundGeolocation } from "@ionic-native/background-geolocation/ngx";
 import { HTTP } from "@ionic-native/http/ngx";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -21,7 +21,7 @@ import { environment } from '../environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
-    BackgroundGeolocation,
+    //BackgroundGeolocation,
     HTTP,
     AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
