@@ -75,7 +75,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-geolocation": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -90,12 +89,13 @@
         "GOOGLE_API_VERSION": "16.+",
         "APPCOMPAT_VERSION": "28.+",
         "OKHTTP_VERSION": "3.12.+",
-        "EVENTBUS_VERSION": "3.0.0"
+        "EVENTBUS_VERSION": "3.0.0",
+        "BACKGROUND_MODE_LOCATION": "<string>location</string>"
       }
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
